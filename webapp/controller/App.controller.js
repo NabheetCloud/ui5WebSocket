@@ -5,13 +5,56 @@ sap.ui.define([
 	"sap/ui/model/FilterOperator"
 ], function(Controller, JSONModel, Filter, FilterOperator) {
 	"use strict";
-
+	var ip = "192.168.29.3";
+	var port = "9001";
+	var usessl = false;
+	var id = (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+	var username = '';
+	var password = '';
+	var message, client;
+	var connected = false;
+	var widgetRepository = {}; //property names are datastreams(keys), values are widget objects
 	return Controller.extend("sap.ui.demo.todo.controller.App", {
-
+    
 		onInit: function() {
 			this.aSearchFilters = [];
 			this.aTabFilters = [];
-			connectMQTT().bind(this);
+			this.client = new Paho.MQTT.Client(ip, Number(port), id);
+			this.client.onConnectionLost = onConnectionLost;
+			this.client.onMessageArrived = onMessageArrived;
+			this.client.connect({
+				useSSL: this.usessl,
+				onSuccess: onConnect
+			});
+		},
+		 onConnectionLost: function(responseObject) {
+			if (responseObject.errorCode !== 0) {
+				console.log("onConnectionLost:" + responseObject.errorMessage);
+			}
+		},
+		 onMessageArrived:function(message) {
+			try {
+				console.log("Recieved Message from server");
+				var value = message.payloadString;
+				var datastream = message.destinationName;
+				console.log("datastream: " + datastream + ", value: " + value);
+			} catch (e) {
+				console.log("exception in onMessageArrived: " + e);
+				return false;
+			}
+		},
+		onConnect: function () {
+			console.log("Connected to server");   
+		  this.client.subscribe("Moisture");
+		  message = new Paho.MQTT.Message("Hello");
+		  message.destinationName = "Moisture";
+		  this.client.send(message);
+			//each key is a datastream which is subscribed
+			Object.keys(widgetRepository).forEach(function(datastream,index) {
+				this.client.subscribe(datastream, {
+					qos: 0
+				});
+			});
 		},
 
 		/**
