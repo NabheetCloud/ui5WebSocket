@@ -19,9 +19,9 @@ sap.ui.define([
 		onInit: function() {
 			this.aSearchFilters = [];
 			this.aTabFilters = [];
-			this.client = new Paho.MQTT.Client(ip, Number(port), id);
-			this.client.onConnectionLost = onConnectionLost;
-			this.client.onMessageArrived = onMessageArrived;
+			this.client = new Paho.MQTT.Client(this.ip, Number(this.port), this.id);
+			this.client.onConnectionLost = this.onConnectionLost;
+			this.client.onMessageArrived = this.onMessageArrived;
 			this.client.connect({
 				useSSL: this.usessl,
 				onSuccess: onConnect
