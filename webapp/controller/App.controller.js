@@ -33,10 +33,15 @@ sap.ui.define([
 				console.log("datastream: " + datastream + ", value: " + value);
 				var oModel = this.getView().getModel();
 				var aTodos = oModel.getProperty("/todos").map(function (oTodo) { return Object.assign({}, oTodo); });
-	
+	             // Use of Date.now() function 
+  var d = Date(Date.now()); 
+  
+  // Converting the number of millisecond in date string 
+  a = d.toString() 
 				aTodos.push({
 					title: value,
-					completed: false
+					completed: false,
+					time:a
 				});
 	
 				oModel.setProperty("/todos", aTodos);

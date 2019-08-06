@@ -19,7 +19,13 @@ controllerName="sap.ui.demo.todo.controller.App" displayBlock="true">
 							</Toolbar>
 						</infoToolbar>
 						<CustomListItem>
-							<Label text="{title}"/>
+							<HBox>
+			
+				<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" >
+					<Link text="{time}" target="{ProductPicUrl}" press="handlePress"/>
+					<Label text="{title}"/>
+				</VBox>
+			</HBox>
 							
 						</CustomListItem>
 					</List>

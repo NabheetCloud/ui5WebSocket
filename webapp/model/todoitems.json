@@ -2,7 +2,8 @@
 	"newTodo": "",
 	"todos": [{
 			"title": "Moisture Data",
-			"completed": true
+			"completed": true,
+			"time":""
 		}
 	],
 	"itemsRemovable": true,
