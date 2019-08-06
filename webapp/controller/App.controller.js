@@ -23,7 +23,7 @@ sap.ui.define([
 			this.client.connect({
 				useSSL: false,
 				onSuccess: this.onConnect
-			});
+			}).bind(this);
 		},
 		 onConnectionLost: function(responseObject) {
 			if (responseObject.errorCode !== 0) {
