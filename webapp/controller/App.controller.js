@@ -37,7 +37,7 @@ sap.ui.define([
   var d = Date(Date.now()); 
   
   // Converting the number of millisecond in date string 
-  a = d.toString() 
+  var a = d.toString() 
 				aTodos.push({
 					title: value,
 					completed: false,
