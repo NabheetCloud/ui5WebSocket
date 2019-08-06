@@ -5,15 +5,15 @@ sap.ui.define([
 	"sap/ui/model/FilterOperator"
 ], function(Controller, JSONModel, Filter, FilterOperator) {
 	"use strict";
-
-
-	return Controller.extend("sap.ui.demo.todo.controller.App", {
-    	var usessl = false;
+	var usessl = false;
 	var username = '';
 	var password = '';
 	var message, client;
 	var connected = false;
-	var widgetRepository = {}; //property names are datastreams(keys), values are widget objects
+	var widgetRepository = {};
+
+	return Controller.extend("sap.ui.demo.todo.controller.App", {
+   //property names are datastreams(keys), values are widget objects
 		onInit: function() {
 			this.aSearchFilters = [];
 			this.aTabFilters = [];
