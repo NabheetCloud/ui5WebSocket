@@ -14,7 +14,7 @@ sap.ui.define([
 			this.aTabFilters = [];
 			this.client = new Paho.MQTT.Client("192.168.29.3", 9001, "nabheet");
 			this.client.onConnectionLost = this.onConnectionLost;
-			this.client.onMessageArrived = this.onMessageArrived;
+			this.client.onMessageArrived = this.onMessageArrived.bind(this);
 			this.client.connect({
 				useSSL: false,
 				onSuccess: this.onConnect.bind(this)
@@ -39,15 +39,6 @@ sap.ui.define([
 		onConnect: function () {
 			console.log("Connected to server");   
 		  this.client.subscribe("Moisture");
-		  message = new Paho.MQTT.Message("Hello");
-		  message.destinationName = "Moisture";
-		  this.client.send(message);
-			//each key is a datastream which is subscribed
-			Object.keys(widgetRepository).forEach(function(datastream,index) {
-				this.client.subscribe(datastream, {
-					qos: 0
-				});
-			});
 		},
 
 		/**
