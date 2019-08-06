@@ -5,21 +5,19 @@ sap.ui.define([
 	"sap/ui/model/FilterOperator"
 ], function(Controller, JSONModel, Filter, FilterOperator) {
 	"use strict";
-	var ip = "192.168.29.3";
-	var port = "9001";
-	var usessl = false;
-	var id = (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+
+
+	return Controller.extend("sap.ui.demo.todo.controller.App", {
+    	var usessl = false;
 	var username = '';
 	var password = '';
 	var message, client;
 	var connected = false;
 	var widgetRepository = {}; //property names are datastreams(keys), values are widget objects
-	return Controller.extend("sap.ui.demo.todo.controller.App", {
-    
 		onInit: function() {
 			this.aSearchFilters = [];
 			this.aTabFilters = [];
-			this.client = new Paho.MQTT.Client(this.ip, Number(this.port), this.id);
+			this.client = new Paho.MQTT.Client("192.168.29.3", 9001, "nabheet");
 			this.client.onConnectionLost = this.onConnectionLost;
 			this.client.onMessageArrived = this.onMessageArrived;
 			this.client.connect({
