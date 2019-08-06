@@ -22,7 +22,7 @@ sap.ui.define([
 			this.client.onMessageArrived = this.onMessageArrived;
 			this.client.connect({
 				useSSL: this.usessl,
-				onSuccess: onConnect
+				onSuccess: this.onConnect
 			});
 		},
 		 onConnectionLost: function(responseObject) {
