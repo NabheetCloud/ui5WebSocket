@@ -36,7 +36,7 @@ sap.ui.define([
 	
 				aTodos.push({
 					title: value,
-					completed: datastream
+					completed: false
 				});
 	
 				oModel.setProperty("/todos", aTodos);
