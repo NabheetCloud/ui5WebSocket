@@ -7,7 +7,7 @@ controllerName="sap.ui.demo.todo.controller.App" displayBlock="true">
 					
 					<List id="todoList"
 						items="{ path: '/todos', events: { change: '.updateItemsLeftCount' } }"
-						mode="MultiSelect"
+						mode="None"
 						growing="true"
 						growingScrollToLoad="true"
 						showNoData="false"
