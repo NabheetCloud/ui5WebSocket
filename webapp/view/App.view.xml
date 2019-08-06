@@ -1,7 +1,7 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" 
 controllerName="sap.ui.demo.todo.controller.App" displayBlock="true"
     xmlns:viz="sap.viz.ui5.controls" xmlns:layout="sap.ui.layout"
-    xmlns:mvc="sap.ui.core.mvc" xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+     xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
     xmlns:viz.data="sap.viz.ui5.data" height="100%">
 	<Shell>
 		<App>
