@@ -5,12 +5,7 @@ sap.ui.define([
 	"sap/ui/model/FilterOperator"
 ], function(Controller, JSONModel, Filter, FilterOperator) {
 	"use strict";
-	var usessl = false;
-	var username = '';
-	var password = '';
-	var message, client;
-	var connected = false;
-	var widgetRepository = {};
+
 
 	return Controller.extend("sap.ui.demo.todo.controller.App", {
    //property names are datastreams(keys), values are widget objects
@@ -22,8 +17,8 @@ sap.ui.define([
 			this.client.onMessageArrived = this.onMessageArrived;
 			this.client.connect({
 				useSSL: false,
-				onSuccess: this.onConnect
-			}).bind(this);
+				onSuccess: this.onConnect.bind(this)
+			});
 		},
 		 onConnectionLost: function(responseObject) {
 			if (responseObject.errorCode !== 0) {
