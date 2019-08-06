@@ -1,12 +1,8 @@
 {
 	"newTodo": "",
 	"todos": [{
-			"title": "Start this app",
+			"title": "Moisture Data",
 			"completed": true
-		},
-		{
-			"title": "Learn OpenUI5",
-			"completed": false
 		}
 	],
 	"itemsRemovable": true,
