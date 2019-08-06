@@ -26,7 +26,7 @@
 							</Toolbar>
 						</infoToolbar>
 						<CustomListItem class="todoListItem" selected="{completed}">
-							<Input enabled="{=!${completed}}" value="{title}"/>
+							<Input enabled="false" value="{title}"/>
 						</CustomListItem>
 					</List>
 				</content>

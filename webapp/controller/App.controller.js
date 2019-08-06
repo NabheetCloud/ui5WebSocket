@@ -31,6 +31,16 @@ sap.ui.define([
 				var value = message.payloadString;
 				var datastream = message.destinationName;
 				console.log("datastream: " + datastream + ", value: " + value);
+				var oModel = this.getView().getModel();
+				var aTodos = oModel.getProperty("/todos").map(function (oTodo) { return Object.assign({}, oTodo); });
+	
+				aTodos.push({
+					title: value,
+					completed: false
+				});
+	
+				oModel.setProperty("/todos", aTodos);
+				oModel.setProperty("/newTodo", "");
 			} catch (e) {
 				console.log("exception in onMessageArrived: " + e);
 				return false;
