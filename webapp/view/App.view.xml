@@ -19,6 +19,7 @@
 						</infoToolbar>
 						<CustomListItem class="todoListItem">
 							<Input enabled="false" value="{title}"/>
+							<Input enabled="false" value="{completed}"/>
 						</CustomListItem>
 					</List>
 				</content>
