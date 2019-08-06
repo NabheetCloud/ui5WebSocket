@@ -2,18 +2,14 @@ sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/ui/model/json/JSONModel",
 	"sap/ui/model/Filter",
-	"sap/ui/model/FilterOperator",
-	'sap/viz/ui5/data/FlattenedDataset',
-	'sap/viz/ui5/format/ChartFormatter',
-	'sap/viz/ui5/api/env/Format',
-	'./InitPage'
-], function(Controller, JSONModel, Filter, FilterOperator, FlattenedDataset, ChartFormatter, Format, InitPageUtil) {
+	"sap/ui/model/FilterOperator"
+], function(Controller, JSONModel, Filter, FilterOperator) {
 	"use strict";
 
 
 	return Controller.extend("sap.ui.demo.todo.controller.App", {
 
-        oVizFrame : null,
+ 
    //property names are datastreams(keys), values are widget objects
 		onInit: function() {
 			this.aSearchFilters = [];
@@ -25,38 +21,7 @@ sap.ui.define([
 				useSSL: false,
 				onSuccess: this.onConnect.bind(this)
 			});
-			var oVizFrame = this.oVizFrame = this.getView().byId("idVizFrame");
-			oVizFrame.setVizProperties({
-                plotArea: {
-                    dataLabel: {
-                        formatString:formatPattern.SHORTFLOAT_MFD2,
-                        visible: true
-                    }
-                },
-                valueAxis: {
-                    label: {
-                        formatString: formatPattern.SHORTFLOAT
-                    },
-                    title: {
-                        visible: false
-                    }
-                },
-                categoryAxis: {
-                    title: {
-                        visible: false
-                    }
-                },
-                title: {
-                    visible: false,
-                    text: 'Revenue by City and Store Name'
-                }
-			});
-			oVizFrame.setModel(this.getView().getModel());
-			var oPopOver = this.getView().byId("idPopOver");
-            oPopOver.connect(oVizFrame.getVizUid());
-            oPopOver.setFormatString(formatPattern.STANDARDFLOAT);
-
-            InitPageUtil.initPageSettings(this.getView());
+			
 		},
 		 onConnectionLost: function(responseObject) {
 			if (responseObject.errorCode !== 0) {

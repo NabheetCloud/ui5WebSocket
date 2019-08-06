@@ -1,39 +1,9 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" 
-controllerName="sap.ui.demo.todo.controller.App" displayBlock="true"
-    xmlns:viz="sap.viz.ui5.controls" xmlns:layout="sap.ui.layout"
-     xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
-    xmlns:viz.data="sap.viz.ui5.data" height="100%">
+controllerName="sap.ui.demo.todo.controller.App" displayBlock="true">
 	<Shell>
 		<App>
 			<Page title="{i18n>TITLE}" backgroundDesign="Solid">
 				<content>
-					    <layout:FixFlex id='chartFixFlex' minFlexSize="250">
-						 <layout:flexContent>
-						             <viz:Popover id="idPopOver"></viz:Popover>
-            <viz:VizFrame id="idVizFrame" uiConfig="{applicationSet:'fiori'}"
-                height='100%' width="100%" vizType='line'>
-                <viz:dataset>
-                    <viz.data:FlattenedDataset data="{/data}">
-                        <viz.data:dimensions>
-                            <viz.data:DimensionDefinition name="Time"
-                                value="{time}" />
-                        </viz.data:dimensions>
-                        <viz.data:measures>
-                            <viz.data:MeasureDefinition name="Title"
-                                value="{title}" />
-                        </viz.data:measures>
-                    </viz.data:FlattenedDataset>
-                </viz:dataset>
-
-                <viz:feeds>
-                    <viz.feeds:FeedItem id='valueAxisFeed' uid="valueAxis" type="Measure"
-                        values="Revenue" />
-                    <viz.feeds:FeedItem id='categoryAxisFeed' uid="categoryAxis" type="Dimension"
-                        values="Week" />
-                </viz:feeds>
-            </viz:VizFrame>
-        </layout:flexContent>
-    </layout:FixFlex>
 					<List id="todoList"
 						items="{ path: '/todos', events: { change: '.updateItemsLeftCount' } }"
 						mode="None"
